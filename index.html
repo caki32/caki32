@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Username,mail,pass</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .username, .email, .password {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .generate-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .generate-btn:hover {
+            background-color: #0056b3;
+        }
+        .email-container, .password-container {
+            max-width: 300px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Random Username, Email and Password Generator</h2>
+        <div class="username" id="username"></div>
+        <button class="generate-btn" onclick="generateUsername()">Generate Username</button>
+    </div>
+
+    <div class="email-container">
+        <h2>Random Mail Generator</h2>
+        <div class="email" id="email"></div>
+        <button class="generate-btn" onclick="generateEmail()">Generate Random Mail</button>
+    </div>
+
+    <div class="password-container">
+        <h2>Random Password Generator</h2>
+        <div class="password" id="password"></div>
+        <button class="generate-btn" onclick="generatePassword()">Generate Random Password</button>
+    </div>
+
+    <script>
+        function generateUsername() {
+            var usernames = [
+                "Cloudy89", "Skincer", "Momo", "Bosarac", "Mangup", "La kaka",
+                "ShadyDude", "TechNinja", "SwiftCoder", "MoonWalker", "StarGazer",
+                "NightOwl", "PixelMaster", "CodeWarrior", "DigitalSage"
+            ];
+
+            var index = Math.floor(Math.random() * usernames.length);
+            var username = usernames[index];
+            document.getElementById("username").textContent = username;
+        }
+
+        function generateEmail() {
+            var domains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com"];
+            var username = generateRandomString(6); // Generate a random 6-character username
+            var domain = domains[Math.floor(Math.random() * domains.length)];
+            var email = username + "@" + domain;
+            document.getElementById("email").textContent = email;
+        }
+
+        function generatePassword() {
+            var password = generateRandomString(10); // Generate a random 10-character password
+            document.getElementById("password").textContent = password;
+        }
+
+        // Function to generate a random string of given length
+        function generateRandomString(length) {
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
